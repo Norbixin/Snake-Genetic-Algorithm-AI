@@ -171,6 +171,7 @@ class Snake:
 
     def init_draw(self):
         pygame.init()
+        pygame.display.set_caption('SnakeAI')
         self.display = pygame.display.set_mode((self.display_width, self.display_height))
 
     @staticmethod
