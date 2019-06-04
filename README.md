@@ -20,3 +20,10 @@
 
 ## Dependencies
 - `pygame`
+
+## Files
+- `main.py` main file that runs genetic algorithm
+- `snake_game.py` contains game logic, uses pygame for drawing
+- `run_game.py` plays snake game using neural network for predicting next move, used by fitness function in genetic algorithm
+- `genetic_algorithm.py` contains genetic algorithm functions
+- `neural_network.py` contains neural network
