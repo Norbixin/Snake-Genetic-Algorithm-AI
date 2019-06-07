@@ -10,6 +10,7 @@
 ## Flags
 - `-h` help
 - `-d` draw run for best chromosome
+- `-L` save every chromosome with its score to log file
 - `-g` `--generation` number of generations
 - `-p` `--population` population size
 - `-c` `--crossover` crossover probability
