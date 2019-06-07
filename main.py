@@ -26,13 +26,13 @@ def main(argv):
                                     "nodes=", "board="])
     except getopt.GetoptError:
         print(
-            'main.py -d (draw best run) -L (save every chromosome with it score to log file) -g <number_of_generations> -p <population_size> -c <crossover_probability>\
+            'main.py -d (draw best run) -L (save every chromosome with its score to log file) -g <number_of_generations> -p <population_size> -c <crossover_probability>\
  -m <mutation_probability> -l <number_of_hidden_layers> -n <nodes_for_hidden_layer> -b <board_size>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
             print(
-                'main.py -d (draw best run) -L (save every chromosome with it score to log file) -g <number_of_generations> -p <population_size> -c <crossover_probability>\
+                'main.py -d (draw best run) -L (save every chromosome with its score to log file) -g <number_of_generations> -p <population_size> -c <crossover_probability>\
  -m <mutation_probability> -l <number_of_hidden_layers> -n <nodes_for_hidden_layer> -b <board_size>')
             sys.exit()
         elif opt == '-d':
