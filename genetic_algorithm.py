@@ -21,10 +21,11 @@ class GeneticAlgorithm:
     board_size = 0
     draw = None
 
-    log = None
+    log = False
+    log_file = None
 
     def __init__(self, population_size, number_of_generations, crossover_probability, mutation_probability, board_size,
-                 draw):
+                 draw, log):
         self.population_size = population_size
         self.number_of_generations = number_of_generations
         self.crossover_probability = crossover_probability
@@ -33,7 +34,9 @@ class GeneticAlgorithm:
         self.draw = draw
         self.board_size = board_size
 
-        self.log = open("log.txt", "w")
+        if log:
+            self.log = log
+            self.log_file = open("log.txt", "w")
 
     @staticmethod
     def create_node(edges):
@@ -72,16 +75,19 @@ class GeneticAlgorithm:
             score = self.fitness(chromosome)
             scores.append([score, chromosome])
             score_sum += score
-            self.log.write(
+            if self.log:
+                self.log_file.write(
                 "Chromosome [" + str(chromosome_num + 1) + "] score: " + str(score) + ", genes: " + str(
                     chromosome) + "\n")
-        self.log.write("Average score: " + str(score_sum / self.population_size) + "\n")
+        if self.log:
+            self.log_file.write("Average score: " + str(score_sum / self.population_size) + "\n")
         return scores
 
     def evolve(self):
         for generation_num in range(1, self.number_of_generations + 1):
             print("Generation: ", generation_num)
-            self.log.write("Generation: " + str(generation_num) + "\n")
+            if self.log:
+                self.log_file.write("Generation: " + str(generation_num) + "\n")
             scores = self.generate_scores()
             scores.sort(reverse=True)
             parents = []
@@ -93,8 +99,8 @@ class GeneticAlgorithm:
             if len(parents) < 2:
                 print("Population is too weak")
                 return None
-
-            self.log.write("Best score: " + str(parents[0][0]) + "\n\n")
+            if self.log:
+                self.log_file.write("Best score: " + str(parents[0][0]) + "\n\n")
 
             print("Score for best chromosome: ", parents[0][0])
 
@@ -102,7 +108,8 @@ class GeneticAlgorithm:
                 self.draw_run(scores[0][1], generation_num)
 
             self.population = self.generate_offspring(parents, score_sum)
-        self.log.close()
+        if self.log:
+            self.log_file.close()
 
     @staticmethod
     def roulette(population, score_sum, last_chromosome=None):
