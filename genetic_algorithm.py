@@ -79,6 +79,7 @@ class GeneticAlgorithm:
                 self.log_file.write(
                 "Chromosome [" + str(chromosome_num + 1) + "] score: " + str(score) + ", genes: " + str(
                     chromosome) + "\n")
+        print("Average score: ", str(score_sum / self.population_size))
         if self.log:
             self.log_file.write("Average score: " + str(score_sum / self.population_size) + "\n")
         return scores
