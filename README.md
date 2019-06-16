@@ -21,6 +21,7 @@
 
 ## Dependencies
 - `pygame`
+- `numpy`
 
 ## Files
 - `main.py` main file that runs genetic algorithm
