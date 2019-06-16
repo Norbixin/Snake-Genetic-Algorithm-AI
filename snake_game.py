@@ -1,5 +1,5 @@
 import pygame
-import random as R
+import random as r
 import math
 
 
@@ -30,9 +30,9 @@ class Snake:
 
     def __init__(self, board_size=8, generation=None):
         self.board_size = board_size
-        self.snake_head = [R.randint(1, self.board_size - 2), R.randint(1, self.board_size - 2)]
+        self.snake_head = [r.randint(1, self.board_size - 2), r.randint(1, self.board_size - 2)]
         self.snake_position = [self.snake_head]
-        self.snake_direction = R.randint(0, 3)
+        self.snake_direction = r.randint(0, 3)
         self.generate_apple()
         self.generation = generation
         self.square_size = int(700 / board_size)
@@ -97,9 +97,9 @@ class Snake:
         self.check_collisions()
 
     def generate_apple(self):
-        self.apple_position = [R.randint(0, self.board_size - 1), R.randint(0, self.board_size - 1)]
+        self.apple_position = [r.randint(0, self.board_size - 1), r.randint(0, self.board_size - 1)]
         while self.apple_position in self.snake_position:
-            self.apple_position = [R.randint(0, self.board_size - 1), R.randint(0, self.board_size - 1)]
+            self.apple_position = [r.randint(0, self.board_size - 1), r.randint(0, self.board_size - 1)]
 
     def in_front_of_snake(self, direction):
         if direction == 0:

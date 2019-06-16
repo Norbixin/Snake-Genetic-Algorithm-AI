@@ -1,4 +1,4 @@
-import random as R
+import random as r
 from run_game import run
 
 
@@ -42,7 +42,7 @@ class GeneticAlgorithm:
     def create_node(edges):
         node = []
         for edge_num in range(edges):
-            node.append(R.uniform(-1, 1))
+            node.append(r.uniform(-1, 1))
         return node
 
     def create_layer(self, nodes, edges_for_node):
@@ -115,7 +115,7 @@ class GeneticAlgorithm:
     @staticmethod
     def roulette(population, score_sum, last_chromosome=None):
         result = []
-        random = R.randint(0, score_sum)
+        random = r.randint(0, score_sum)
         cur = 0
         for chromosome in population:
             cur += chromosome[0]
@@ -132,16 +132,16 @@ class GeneticAlgorithm:
             while parent2 == parent1:
                 parent2 = self.roulette(parents, score_sum, parent1)
 
-            if R.uniform(0, 1) <= self.crossover_probability:
+            if r.uniform(0, 1) <= self.crossover_probability:
                 child = self.crossover(parent1, parent2)
                 if child not in offspring:
                     offspring.append(child)
             else:
-                child = R.choice([parent1, parent2])
+                child = r.choice([parent1, parent2])
                 if child not in offspring:
                     offspring.append(child)
 
-            if R.uniform(0, 1) <= self.mutation_probability:
+            if r.uniform(0, 1) <= self.mutation_probability:
                 offspring[-1] = self.mutate(offspring[-1])
 
         return offspring
@@ -150,8 +150,8 @@ class GeneticAlgorithm:
         for layer_num in range(self.number_of_hidden_layers + 1):
             for node_num in range(len(chromosome[layer_num])):
                 for edge_num in range(len(chromosome[layer_num][node_num])):
-                    if R.uniform(0, 1) < 0.05:
-                        chromosome[layer_num][node_num][edge_num] = R.uniform(-1, 1)
+                    if r.uniform(0, 1) < 0.05:
+                        chromosome[layer_num][node_num][edge_num] = r.uniform(-1, 1)
         return chromosome
 
     def crossover(self, parent1, parent2):

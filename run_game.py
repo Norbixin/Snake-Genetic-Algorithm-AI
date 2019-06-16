@@ -1,6 +1,6 @@
 from snake_game import Snake
 from neural_network import Network
-import time
+from time import sleep
 
 
 def run(weights, number_of_hidden_layers, node_for_first_layer, node_for_hidden_layer, node_for_last_layer, max_steps,
@@ -62,7 +62,7 @@ def run(weights, number_of_hidden_layers, node_for_first_layer, node_for_hidden_
 
         if draw:
             snake.draw_game()
-            time.sleep(0.02)
+            sleep(0.02)
         steps += 1
 
     return score

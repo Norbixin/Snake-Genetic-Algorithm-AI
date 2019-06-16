@@ -1,4 +1,4 @@
-import numpy as np
+from numpy import exp
 
 
 class Network:
@@ -51,12 +51,12 @@ class Network:
 
     @staticmethod
     def sigmoid(value):
-        return 1 / (1 + np.exp(-value))
+        return 1 / (1 + exp(-value))
 
     @staticmethod
     def sigmoid_bipolar(value):
-        return (1 - np.exp(-value)) / (1 + np.exp(-value))
+        return (1 - exp(-value)) / (1 + exp(-value))
 
     @staticmethod
     def tangent_hyperbolic(value):
-        return (np.exp(value) - np.exp(-value)) / (np.exp(value) + np.exp(-value))
+        return (exp(value) - exp(-value)) / (exp(value) + exp(-value))
